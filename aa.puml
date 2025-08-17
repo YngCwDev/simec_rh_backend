@@ -1,0 +1,29 @@
+@startuml
+class com.mec.simec_rh.Entities.Funcionario {
+- Long id
+- String nuit
+- String numeroCracha
+- String nomeCompleto
+- String numeroBi
+- Sexo sexo
+- EstadoCivil estadoCivil
+- String nacionalidade
+- LocalDate dataNascimento
+- int idade
+- String contactoPrincipal
+- String contactoSecundario
+- String email
+- LocalDate dataIngressoAdministracaoEstadual
+- boolean Ativo
+- Provincia provinciaNascimento
+- Usuario usuario
+- List<SituacaoQuadro> situacaoQuadroList
+- List<Formacao> formacaoList
+- List<HistoricoCarreira> historicoCarreiraList
+- List<Transferencia> transferenciaList
+- Alocacao alocacao
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+@enduml

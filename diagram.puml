@@ -1,0 +1,181 @@
+@startuml
+class com.mec.simec_rh.Entities.Formacao {
+- Long Id
+- int funcionarioId
+- String nivelEducacional
+- String especialidade
+- String instituicaoEnsino
+- LocalDate dataConclusao
+- Integer anoConclusao
+- boolean formacaoGeral
+- boolean formacaoTecnica
+- boolean formacaoEducacional
+- boolean formacaoMaisElevada
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Usuario {
+- UUID Id
+- String username
+- String email
+- String password
+- Perfis perfil
+- boolean ativo
+- LocalDateTime ultimo_login
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.Funcao {
+- Long Id
+- String titulo
+- TipoFuncao tipoFuncao
+- String descricao
+- boolean ativa
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Alocacao {
+- Long Id
+- String classe
+- int escalao
+- LocalDateTime dataIncioAlocacao
+- LocalDateTime dataFinalAlocacao
+- StatusAlocacao statusAlocacao
+- String observacoes
+- LocalDateTime updatedAt
+- LocalDateTime createdAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.Distrito {
+- int id
+- String nome
+- Provincia provincia
+- boolean ativo
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.Provincia {
+- Long id
+- String nome
+- String sigla
+- Regiao regiao
+- boolean ativa
+- List<Funcionario> funcionarios
+- List<Distrito> distritos
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Funcionario {
+- Long id
+- String nuit
+- String numeroCracha
+- String nomeCompleto
+- String numeroBi
+- Sexo sexo
+- EstadoCivil estadoCivil
+- String nacionalidade
+- LocalDate dataNascimento
+- int idade
+- String contactoPrincipal
+- String contactoSecundario
+- String email
+- LocalDate dataIngressoAdministracaoEstadual
+- boolean Ativo
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+- Provincia provinciaNascimento
+}
+
+class com.mec.simec_rh.Entities.Helpers.Carreira {
+- Long id
+- String titulo
+- String regime
+- String descricao
+- boolean ativa
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Atividade {
+}
+class com.mec.simec_rh.Entities.UnidadeOrganica {
+- Long Id
+- String nome
+- String sigla
+- TipoUnidadeOrganica tipoUnidadeOrganica
+- String endereco
+- int capacidadeFuncionarios
+- boolean ativa
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Transferencia {
+- Long Id
+- int funcionarioId
+- int alocacaoOrigemId
+- int unidadeDestinoId
+- int provinciaDestinoId
+- Integer distritoDestinoId
+- String motivoTransferencia
+- LocalDate dataSolicitacao
+- LocalDate dataAprovacao
+- LocalDate dataEfetivacao
+- String numeroDespacho
+- LocalDate dataVTA
+- String numeroProcessoVTA
+- String statusTransferencia
+- Integer aprovadoPor
+- String observacoes
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.Categoria {
+- Long id
+- String categoria
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.TipoLicenca {
+- int Id
+- String nome
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.TipoCessacao {
+- int Id
+- String nome
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.TipoSancaoDisciplinar {
+- int Id
+- String nome
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.TipoNomeacao {
+- int Id
+- String nome
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+class com.mec.simec_rh.Entities.Helpers.TipoSituacaoQuadro {
+- int Id
+- String nome
+- LocalDateTime createdAt
+- LocalDateTime updatedAt
+}
+
+@enduml

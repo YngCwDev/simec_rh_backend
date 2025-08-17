@@ -1,0 +1,36 @@
+package com.mec.simec_rh.Entities.planTo;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import java.time.LocalDateTime;
+
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+public class Atividade {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    private int funcionarioId;
+    private int responsavel;
+    private String tipoAtividade;
+    private String descricao;
+    private LocalDateTime dataAtividade;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private  LocalDateTime updatedAt;
+
+}
