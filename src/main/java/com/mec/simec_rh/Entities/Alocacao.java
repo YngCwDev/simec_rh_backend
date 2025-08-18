@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mec.simec_rh.Entities.Helpers.*;
 import com.mec.simec_rh.Enums.Classe;
 import com.mec.simec_rh.Enums.StatusAlocacao;
@@ -8,6 +9,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,14 +27,16 @@ public class Alocacao {
 
     private Classe classe;
     private int escalao;
-    private LocalDateTime dataIncioAlocacao;
-    private LocalDateTime dataFinalAlocacao;
+    private LocalDate dataIncioAlocacao;
+    private LocalDate dataFinalAlocacao;
     private StatusAlocacao statusAlocacao;
     private String observacoes;
 
     /* Relationships */
 
-    @OneToOne(mappedBy = "alocacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    @JsonIgnore
     private Funcionario funcionario;
 
     // unidadeOrganica

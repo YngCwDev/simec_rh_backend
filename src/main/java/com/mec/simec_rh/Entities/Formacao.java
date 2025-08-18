@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mec.simec_rh.Enums.NivelEducacional;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,7 @@ public class Formacao {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
+    @JsonIgnore
     private Funcionario funcionario;
 
     @Enumerated(EnumType.STRING)

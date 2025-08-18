@@ -1,10 +1,20 @@
 package com.mec.simec_rh.Enums;
 
+import lombok.Getter;
+
+@Getter
 public enum TipoUnidadeOrganica {
-    Ministerio,
-    Direccao_Nacional,
-    Direccao_Provincial,
-    Instituto,
-    Conselho,
-    Escola
+    MINISTERIO("Ministério"),
+    DIRECCAO_NACIONAL("Direcção Nacional"),
+    DIRECCAO_PROVINCIAL("Direcção Provincial"),
+    INSTITUTO("Instituto"),
+    CONSELHO("Conselho"),
+    ESCOLA("Escola");
+
+    private final String descricao;
+
+    TipoUnidadeOrganica(String descricao) {
+        this.descricao = descricao;
+    }
+
 }

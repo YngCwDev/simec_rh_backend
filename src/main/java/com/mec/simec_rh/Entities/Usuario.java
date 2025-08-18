@@ -45,7 +45,7 @@ public class Usuario {
     private  Funcionario funcionario;
 
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "alocadoPor", cascade = CascadeType.ALL)
     private  List<Alocacao> alocacaos;
 
 }

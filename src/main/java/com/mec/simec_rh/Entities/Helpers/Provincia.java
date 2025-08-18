@@ -35,7 +35,7 @@ public class Provincia {
     @Column(nullable = false)
     private boolean isAtive;
 
-    @OneToMany(mappedBy = "provincia",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "provinciaNascimento",cascade = CascadeType.ALL)
     private List<Funcionario> funcionarioList;
 
     @OneToMany(mappedBy = "provincia",cascade = CascadeType.ALL)

@@ -1,10 +1,9 @@
-package com.mec.simec_rh.Repositories;
+package com.mec.simec_rh.Repositories.Helpers;
 
 import com.mec.simec_rh.Entities.Alocacao;
-import com.mec.simec_rh.Entities.Funcionario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AlocacaoRepositoryInterface extends JpaRepository<Alocacao, Long> {
+public interface ProvinciaRepositoryInterface extends JpaRepository<Alocacao, Long> {
 }

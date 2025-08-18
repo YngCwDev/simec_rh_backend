@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities.Helpers;
 
+import com.mec.simec_rh.Entities.Alocacao;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +28,9 @@ public class Distrito {
     @ManyToOne
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
+
+    @OneToMany(mappedBy = "distrito")
+    private List<Alocacao> alocacaoList;
 
     @Column(nullable = false)
     private  boolean ativo = true;

@@ -1,4 +1,4 @@
-package com.mec.simec_rh.Entities.planTo;
+package com.mec.simec_rh.Entities.temp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

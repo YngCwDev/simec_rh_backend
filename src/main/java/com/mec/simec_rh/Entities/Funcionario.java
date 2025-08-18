@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mec.simec_rh.Entities.Helpers.Provincia;
 import com.mec.simec_rh.Enums.EstadoCivil;
 import com.mec.simec_rh.Enums.Sexo;
@@ -42,28 +43,21 @@ public class Funcionario {
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
 
-    @Column(nullable = false, columnDefinition = "enum default 'Mocambicana'")
+
     private String nacionalidade;
 
-    @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(nullable = false)
     private int idade;
 
-    @Column(nullable = false)
     private String contactoPrincipal;
 
-    @Column(nullable = false)
     private String contactoSecundario;
 
-    @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
     private LocalDate dataIngressoAE;
 
-    @Column(nullable = false)
     private boolean Ativo;
 
 
@@ -84,8 +78,8 @@ public class Funcionario {
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, orphanRemoval = true)
     private  List<HistoricoCarreira> historicoCarreiraList;
 
-    @OneToOne(mappedBy = "funcionario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private  Alocacao alocacao;
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private  List<Alocacao> alocacao;
 
 
     @CreationTimestamp

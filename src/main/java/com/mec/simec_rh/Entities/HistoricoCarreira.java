@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mec.simec_rh.Entities.Helpers.Carreira;
 import com.mec.simec_rh.Entities.Helpers.Categoria;
 import com.mec.simec_rh.Entities.Helpers.Funcao;
@@ -32,6 +33,7 @@ public class HistoricoCarreira {
 
     @ManyToOne
     @JoinColumn(name="funcionario_id")
+    @JsonIgnore
     private Funcionario funcionario;
 
     @ManyToOne()

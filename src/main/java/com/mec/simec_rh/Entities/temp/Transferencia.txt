@@ -1,4 +1,4 @@
-package com.mec.simec_rh.Entities.planTo;
+package com.mec.simec_rh.Entities.temp;
 
 import com.mec.simec_rh.Entities.Alocacao;
 import com.mec.simec_rh.Entities.Funcionario;
@@ -50,11 +50,11 @@ public class Transferencia {
     private Usuario aprovadoPor;
 
     private String motivoTransferencia;
-    private LocalDateTime dataSolicitacao;
-    private LocalDateTime dataAprovacao;
-    private LocalDateTime dataEfetivacao;
+    private LocalDate dataSolicitacao;
+    private LocalDate dataAprovacao;
+    private LocalDate dataEfetivacao;
     private String numeroDespacho;
-    private LocalDateTime dataVTA;
+    private LocalDate dataVTA;
     private String numeroProcessoVTA;
 
     private StatusTransferencia statusTransferencia;

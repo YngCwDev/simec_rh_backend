@@ -1,6 +1,7 @@
 package com.mec.simec_rh.Entities;
 
-import com.mec.simec_rh.Entities.Helpers.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mec.simec_rh.Enums.*;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,6 +36,7 @@ public class SituacaoQuadro {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
+    @JsonIgnore
     private Funcionario funcionario;
 
     @ManyToOne
@@ -47,14 +49,12 @@ public class SituacaoQuadro {
 
     @ManyToOne
     @JoinColumn(name = "tipo_licenca_id")
-    private TipoLicenca tipoLicenca;
+    private Licenca licenca;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_cessacao_id")
+
     private TipoCessacao tipoCessacao;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_sancao_disciplinar_id")
+
     private TipoSancaoDisciplinar tipoSancaoDisciplinar;
 
 
