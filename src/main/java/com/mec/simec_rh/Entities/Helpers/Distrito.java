@@ -1,5 +1,7 @@
 package com.mec.simec_rh.Entities.Helpers;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mec.simec_rh.Entities.Alocacao;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "distritos")
 public class Distrito {
 
     @Id
@@ -27,9 +30,11 @@ public class Distrito {
 
     @ManyToOne
     @JoinColumn(name = "provincia_id")
+    @JsonBackReference("provincia-distrito")
     private Provincia provincia;
 
-    @OneToMany(mappedBy = "distrito")
+    @OneToMany(mappedBy = "distrito", fetch = FetchType.LAZY)
+    @JsonManagedReference("distrito-alocacoes")
     private List<Alocacao> alocacaoList;
 
     @Column(nullable = false)

@@ -1,8 +1,10 @@
 package com.mec.simec_rh.Controllers;
 
+import com.mec.simec_rh.DTOs.Funcionario.FuncionarioDTO;
 import com.mec.simec_rh.Entities.Funcionario;
+import com.mec.simec_rh.Mappers.FuncionarioMapper;
 import com.mec.simec_rh.Services.FuncionarioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,18 +16,19 @@ public class FuncionarioController {
 
     private final  FuncionarioService funcionarioService;
 
-    public FuncionarioController(FuncionarioService funcionarioService) {
+
+    public FuncionarioController(FuncionarioService funcionarioService, FuncionarioMapper funcionarioMapper) {
         this.funcionarioService = funcionarioService;
     }
 
-    @GetMapping
-    public List<Funcionario> obterTodosFuncionarios(){
-        return funcionarioService.getAllFuncionario();
+    @GetMapping("full")
+    public ResponseEntity<List<FuncionarioDTO>> obterTodosFuncionariosCompleto(){
+        return ResponseEntity.status(HttpStatus.FOUND).body(funcionarioService.getAllFullFuncionario());
     }
 
     @GetMapping("{id}")
-    public List<Funcionario> obterFuncionario(){
-        return funcionarioService.getAllFuncionario();
+    public Funcionario obterTodosFuncionario(){
+        return funcionarioService.getFuncionario();
     }
 
     @PostMapping
@@ -38,9 +41,9 @@ public class FuncionarioController {
         return funcionarioService.registrarFuncionario(funcionario);
     }
 
-    @PutMapping
-    public Funcionario atualizarFuncionario(@RequestBody Funcionario funcionario){
-        return  funcionarioService.atualizarFuncionario(funcionario);
+    @PutMapping("{id}")
+    public Funcionario atualizarFuncionario(@RequestBody Funcionario funcionario, @PathVariable Long id){
+        return  funcionarioService.atualizarFuncionario(funcionario, id);
     }
 
 }

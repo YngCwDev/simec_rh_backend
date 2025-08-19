@@ -1,6 +1,7 @@
 package com.mec.simec_rh.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mec.simec_rh.Enums.TipoUnidadeOrganica;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "unidades_organicas")
 public class UnidadeOrganica {
 
     @Id
@@ -31,6 +33,7 @@ public class UnidadeOrganica {
     private  int capacidadeFuncionarios;
 
     @OneToMany(mappedBy = "unidadeOrganica")
+    @JsonManagedReference("uniorganica-alocacoes")
     private List<Alocacao> alocacaoList;
 
     @Column(columnDefinition = "boolean default true")

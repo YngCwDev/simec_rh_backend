@@ -1,5 +1,7 @@
 package com.mec.simec_rh.Entities.Helpers;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mec.simec_rh.Entities.Alocacao;
 import com.mec.simec_rh.Entities.Funcionario;
 import com.mec.simec_rh.Enums.Regiao;
@@ -17,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "provincias")
 public class Provincia {
 
     @Id
@@ -36,13 +39,16 @@ public class Provincia {
     private boolean isAtive;
 
     @OneToMany(mappedBy = "provinciaNascimento",cascade = CascadeType.ALL)
+    @JsonManagedReference("provincia-funcionario")
     private List<Funcionario> funcionarioList;
 
     @OneToMany(mappedBy = "provincia",cascade = CascadeType.ALL)
+    @JsonManagedReference("provincia-alocacoes")
     private List<Alocacao> alocacaoList;
 
 
     @OneToMany(mappedBy = "provincia",cascade = CascadeType.ALL)
+    @JsonManagedReference("provincia-distrito")
     private  List<Distrito> distritoList;
 
     @CreationTimestamp

@@ -1,6 +1,6 @@
 package com.mec.simec_rh.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.mec.simec_rh.Entities.Helpers.*;
 import com.mec.simec_rh.Enums.Classe;
 import com.mec.simec_rh.Enums.StatusAlocacao;
@@ -11,7 +11,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "alocacoes")
 public class Alocacao {
 
     @Id
@@ -36,44 +36,44 @@ public class Alocacao {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-    @JsonIgnore
+    @JsonBackReference("funcionario-alocacoes")
     private Funcionario funcionario;
 
-    // unidadeOrganica
 
     @ManyToOne
     @JoinColumn(name = "unidade_organica_id")
+    @JsonBackReference("uniorganica-alocacoes")
     private UnidadeOrganica unidadeOrganica;
 
-    // provincia
 
     @ManyToOne
     @JoinColumn(name = "provincia_id")
+    @JsonBackReference("provincia-alocacoes")
     private Provincia provincia;
 
-    // distrito
     @ManyToOne
     @JoinColumn(name = "distrito_id")
+    @JsonBackReference("distrito-alocacoes")
     private Distrito distrito;
 
-    // carreira
     @ManyToOne
     @JoinColumn(name = "carreira_id")
+    @JsonBackReference("carreira-alocacoes")
     private Carreira carreira;
 
-    // funcao
     @ManyToOne
     @JoinColumn(name = "funcao_id")
+    @JsonBackReference("funcao-alocacoes")
     private Funcao funcao;
 
-    // categoria
     @ManyToOne
     @JoinColumn(name = "categoria_id")
+    @JsonBackReference("categoria-alocacoes")
     private Categoria categoria;
 
-    // Usuario
     @ManyToOne
     @JoinColumn(name = "alocado_por_id")
+    @JsonBackReference("usuario-alocacoes")
     private Usuario alocadoPor;
 
     @UpdateTimestamp

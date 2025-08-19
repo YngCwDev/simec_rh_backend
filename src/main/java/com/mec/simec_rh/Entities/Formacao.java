@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mec.simec_rh.Enums.NivelEducacional;
 import jakarta.persistence.*;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "formacoes")
 public class Formacao {
 
     @Id
@@ -24,7 +26,7 @@ public class Formacao {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-    @JsonIgnore
+    @JsonBackReference("funcionario-formacao")
     private Funcionario funcionario;
 
     @Enumerated(EnumType.STRING)

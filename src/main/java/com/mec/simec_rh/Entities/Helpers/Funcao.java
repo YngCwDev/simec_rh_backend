@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities.Helpers;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mec.simec_rh.Entities.Alocacao;
 import com.mec.simec_rh.Entities.HistoricoCarreira;
 import com.mec.simec_rh.Enums.CategoriaFuncao;
@@ -18,8 +19,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "funcoes")
 public class Funcao {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -35,9 +36,11 @@ public class Funcao {
     private boolean ativa;
 
     @OneToMany(mappedBy = "funcao", cascade = CascadeType.ALL)
+    @JsonManagedReference("funcao-historico")
     private List<HistoricoCarreira> historicoCarreiraList;
 
     @OneToMany(mappedBy = "funcao",cascade = CascadeType.ALL)
+    @JsonManagedReference("funcao-alocacoes")
     private List<Alocacao> alocacaoList;
 
     @CreationTimestamp

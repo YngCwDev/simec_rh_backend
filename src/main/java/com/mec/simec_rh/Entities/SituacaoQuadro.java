@@ -1,5 +1,6 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mec.simec_rh.Enums.*;
 import jakarta.persistence.*;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "situacao_de_quadro")
 public class SituacaoQuadro {
 
     @Id
@@ -36,24 +38,16 @@ public class SituacaoQuadro {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-    @JsonIgnore
+    @JsonBackReference("funcionario-situacao")
     private Funcionario funcionario;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_nomeacao_id")
     private TipoNomeacao tipoNomeacao;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_situacao_quadro_id")
     private TipoSituacaoQuadro tipoSituacaoQuadro;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_licenca_id")
     private Licenca licenca;
 
-
     private TipoCessacao tipoCessacao;
-
 
     private TipoSancaoDisciplinar tipoSancaoDisciplinar;
 

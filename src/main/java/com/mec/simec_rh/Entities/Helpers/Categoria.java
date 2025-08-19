@@ -1,6 +1,7 @@
 package com.mec.simec_rh.Entities.Helpers;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mec.simec_rh.Entities.Alocacao;
 import com.mec.simec_rh.Entities.HistoricoCarreira;
 import jakarta.persistence.*;
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "categorias")
 public class Categoria {
 
     @Id
@@ -26,9 +28,11 @@ public class Categoria {
     private  String nome;
 
     @OneToMany(mappedBy = "categoria")
+    @JsonManagedReference("categoria-alocacoes")
     private List<Alocacao> alocacaoList;
 
     @OneToMany(mappedBy = "categoria")
+    @JsonManagedReference("categoria-historico")
     private List<HistoricoCarreira> historicoCarreiraList;
 
     @CreationTimestamp

@@ -1,0 +1,9 @@
+package com.mec.simec_rh.Controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/situacoesquadro")
+public class SituacaoQuadroController {
+}

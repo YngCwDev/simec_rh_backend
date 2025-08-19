@@ -1,5 +1,7 @@
 package com.mec.simec_rh.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mec.simec_rh.Enums.Perfil;
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
@@ -17,8 +19,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -42,10 +44,12 @@ public class Usuario {
 
     @OneToOne
     @JoinColumn(name = "funcionario_id")
+    @JsonBackReference("funcionario-usuario")
     private  Funcionario funcionario;
 
 
     @OneToMany(mappedBy = "alocadoPor", cascade = CascadeType.ALL)
+    @JsonManagedReference("usuario-alocacoes")
     private  List<Alocacao> alocacaos;
 
 }
